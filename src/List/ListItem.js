@@ -1,17 +1,33 @@
 import React from "react";
-// import { connect } from "react-redux";
+// import { bindActionCreators } from "redux";
+import { showRecipe } from "../recipes";
+import { connect } from "react-redux";
 
 const ListItem = props => {
-  return <li> {props.recipe.title}</li>;
+  return (
+    <li onClick={() => props.onClick(props.recipe.title)}>
+      {props.recipe.title}
+    </li>
+  );
 };
 
 // const mapStateToProps = state => ({
 //   recipes: state.recipes
 // });
 
-// export default connect(
-//   mapStateToProps,
-//   null
-// )(List);
+// const mapDispatchToProps = dispatch => ({
+//   actions: bindActionCreators(showRecipe, dispatch)
+// });
 
-export default ListItem;
+function mapDispatchToProps(dispatch) {
+  return {
+    onClick: title => dispatch(showRecipe(title))
+  };
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(ListItem);
+
+// export default ListItem;
