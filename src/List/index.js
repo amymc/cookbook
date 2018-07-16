@@ -3,9 +3,16 @@ import { connect } from "react-redux";
 import ListItem from "./ListItem";
 
 const List = props => {
-  return <ul> {this.props}</ul>;
+  //   return <ul> {this.props}</ul>;
 
-  //   return <ul> {this.props.recipes.map((recipe, index) => <ListItem />)}</ul>;
+  return (
+    <ul>
+      {" "}
+      {props.recipes.map((recipe, index) => (
+        <ListItem recipe={recipe} key={index} />
+      ))}
+    </ul>
+  );
 };
 
 const mapStateToProps = state => ({

@@ -2,7 +2,7 @@ import React from "react";
 // import { connect } from "react-redux";
 
 const ListItem = props => {
-  return <li> {this.props.title}</li>;
+  return <li> {props.recipe.title}</li>;
 };
 
 // const mapStateToProps = state => ({
