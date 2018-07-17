@@ -13,6 +13,7 @@ const Details = props => {
       <ul>
         {recipe.equipment.map((item, index) => <li key={index}>{item}</li>)}
       </ul>
+      <span>{recipe.preparationTime}mins</span>
       <ul>
         {recipe.preparationSteps.map((step, index) => (
           <li key={index}>{step}</li>
