@@ -6,6 +6,7 @@ import List from "./List";
 import "./App.css";
 
 const filterOptions = [
+  { filter_by: "SHOW_ALL", text: "Clear filter" },
   { filter_by: "TIME", text: "Show quick recipes" },
   {
     filter_by: "RICE_COOKER",
