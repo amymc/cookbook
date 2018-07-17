@@ -9,6 +9,8 @@ export const getFilteredList = (recipes, filter) => {
       return recipes;
     case "TIME":
       return recipes.filter(recipe => recipe.preparationTime < 30);
+    case "RICE_COOKER":
+      return recipes.filter(recipe => recipe.equipment.includes("Rice Cooker"));
     case "GOCHUJANG_ONION":
       return recipes.filter(
         recipe =>
