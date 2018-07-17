@@ -7,6 +7,15 @@ export function showRecipe(title) {
   };
 }
 
+export const DELETE_RECIPE = "DELETE_RECIPE";
+export function deleteRecipe(title) {
+  console.log("SHOW_RECIPE", title);
+  return {
+    type: DELETE_RECIPE,
+    title
+  };
+}
+
 export const recipesReducer = (state = [], action) => {
   //   let nextState = state;
   switch (action.type) {
@@ -17,6 +26,9 @@ export const recipesReducer = (state = [], action) => {
             ? { ...recipe, isSelected: true }
             : { ...recipe, isSelected: false }
       );
+    case DELETE_RECIPE:
+      return state.filter(recipe => recipe.title !== action.title);
+    //   state.filter(({ id }) => id !== action.data)
     default:
       return state;
   }

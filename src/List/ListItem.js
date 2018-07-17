@@ -1,12 +1,16 @@
 import React from "react";
 import { bindActionCreators } from "redux";
-import { showRecipe } from "../recipes";
+import { deleteRecipe, showRecipe } from "../recipes";
 import { connect } from "react-redux";
 
 const ListItem = props => {
   return (
-    <li onClick={() => props.onClick(props.recipe.title)}>
+    <li onClick={() => props.showRecipe(props.recipe.title)}>
       {props.recipe.title}
+      <button onClick={() => props.deleteRecipe(props.recipe.title)}>
+        {" "}
+        X{" "}
+      </button>
     </li>
   );
 };
@@ -16,7 +20,8 @@ const ListItem = props => {
 // });
 
 const mapDispatchToProps = dispatch => ({
-  onClick: bindActionCreators(showRecipe, dispatch)
+  deleteRecipe: bindActionCreators(deleteRecipe, dispatch),
+  showRecipe: bindActionCreators(showRecipe, dispatch)
 });
 
 // function mapDispatchToProps(dispatch) {
