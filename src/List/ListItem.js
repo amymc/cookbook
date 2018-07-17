@@ -1,5 +1,5 @@
 import React from "react";
-// import { bindActionCreators } from "redux";
+import { bindActionCreators } from "redux";
 import { showRecipe } from "../recipes";
 import { connect } from "react-redux";
 
@@ -15,15 +15,15 @@ const ListItem = props => {
 //   recipes: state.recipes
 // });
 
-// const mapDispatchToProps = dispatch => ({
-//   actions: bindActionCreators(showRecipe, dispatch)
-// });
+const mapDispatchToProps = dispatch => ({
+  onClick: bindActionCreators(showRecipe, dispatch)
+});
 
-function mapDispatchToProps(dispatch) {
-  return {
-    onClick: title => dispatch(showRecipe(title))
-  };
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     onClick: title => dispatch(showRecipe(title))
+//   };
+// }
 
 export default connect(
   null,

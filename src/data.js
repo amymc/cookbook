@@ -18,12 +18,18 @@ export default {
         "2. Add the ginger, onion. Cook, stirring occasionally, 2 to 3 minutes, or until softened and fragrant.",
         "3. Add 1 1/2 cups water, and all of the rice to the rice cooker."
       ],
-      hints: {
-        gochujang:
-          "Gochujang or red chili paste is a savory, sweet, and spicy fermented condiment made from chili powder, glutinous rice, meju powder, yeotgireum, and salt",
-        riceCooker:
-          "A rice cooker or rice steamer is an automated kitchen appliance designed to boil or steam rice. It consists of a heat source, a cooking bowl, and a thermostat. The thermostat measures the temperature of the cooking bowl and controls the heat."
-      },
+      hints: [
+        {
+          title: "Gochujang",
+          description:
+            "Gochujang or red chili paste is a savory, sweet, and spicy fermented condiment made from chili powder, glutinous rice, meju powder, yeotgireum, and salt"
+        },
+        {
+          title: "Rice Cooker",
+          description:
+            "A rice cooker or rice steamer is an automated kitchen appliance designed to boil or steam rice. It consists of a heat source, a cooking bowl, and a thermostat. The thermostat measures the temperature of the cooking bowl and controls the heat."
+        }
+      ],
       isSelected: false
     }
   ]

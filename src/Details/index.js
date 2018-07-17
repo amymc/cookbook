@@ -1,24 +1,35 @@
 import React from "react";
-import { connect } from "react-redux";
 
 const Details = props => {
-  return <ul> {this.props.recipes.map((recipe, index) => <ListItem />)}</ul>;
+  const { recipe } = props;
+  return (
+    <div>
+      <h1>{recipe.title}</h1>
+      <ul>
+        {recipe.ingredients.map((ingredient, index) => (
+          <li key={index}>{ingredient}</li>
+        ))}
+      </ul>
+      <ul>
+        {recipe.equipment.map((item, index) => <li key={index}>{item}</li>)}
+      </ul>
+      <ul>
+        {recipe.preparationSteps.map((step, index) => (
+          <li key={index}>{step}</li>
+        ))}
+      </ul>
+      {recipe.hints && (
+        <ul>
+          {recipe.hints.map((hint, index) => (
+            <li key={index}>
+              <h3>{hint.title}</h3>
+              <span>{hint.description}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
 };
 
-const mapStateToProps = state => ({
-  recipes: state.recipes
-});
-
-//   function mapDispatchToProps(dispatch) {
-//     return {
-//       sendText: event => dispatch(changeText(event.target.value)),
-//       onClick: event => {
-//         dispatch(changeText(''))
-//       }
-//     };
-//   }
-
-export default connect(
-  mapStateToProps,
-  null
-)(Details);
+export default Details;
