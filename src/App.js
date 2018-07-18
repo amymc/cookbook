@@ -1,11 +1,24 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { css } from "emotion";
 import { deleteRecipe, toggleRecipeDetails } from "./Ducks/recipes";
 import Details from "./Details";
 import Button from "./Button";
 import List from "./List";
-import "./App.css";
+
+const app = css({
+  display: "flex",
+  flexDirection: "row"
+});
+
+const buttonWrapper = css({
+  display: "flex",
+  flexDirection: "column",
+  width: "150px",
+  alignSelf: "center",
+  justifyContent: "center"
+});
 
 const filterOptions = [
   { filter_by: "SHOW_ALL", text: "Clear filters" },
@@ -36,19 +49,17 @@ const getFilteredList = (recipes, filter) => {
       return recipes;
   }
 };
-
-class App extends Component {
-  render() {
-    const { props } = this;
-    return (
-      <div className="App">
-        {props.selectedRecipe ? (
-          <Details
-            recipe={props.selectedRecipe}
-            onClick={props.toggleRecipeDetails}
-          />
-        ) : (
-          <div>
+const App = props => {
+  return (
+    <div className={app}>
+      {props.selectedRecipe ? (
+        <Details
+          recipe={props.selectedRecipe}
+          onClick={props.toggleRecipeDetails}
+        />
+      ) : (
+        <React.Fragment>
+          <div className={buttonWrapper}>
             {filterOptions.map((option, index) => (
               <Button
                 filter_by={option.filter_by}
@@ -56,17 +67,17 @@ class App extends Component {
                 key={index}
               />
             ))}
-            <List
-              recipes={props.recipes}
-              deleteRecipe={props.deleteRecipe}
-              toggleRecipeDetails={props.toggleRecipeDetails}
-            />
           </div>
-        )}
-      </div>
-    );
-  }
-}
+          <List
+            recipes={props.recipes}
+            deleteRecipe={props.deleteRecipe}
+            toggleRecipeDetails={props.toggleRecipeDetails}
+          />
+        </React.Fragment>
+      )}
+    </div>
+  );
+};
 
 const mapStateToProps = (state, ownProps) => ({
   filterBy: state.filter,
