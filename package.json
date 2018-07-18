@@ -2,6 +2,7 @@
   "name": "cookbook",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://amymccarthy.co/cookbook",
   "dependencies": {
     "emotion": "^9.2.6",
     "gh-pages": "^1.2.0",
