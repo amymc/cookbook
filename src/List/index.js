@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import ListItem from "./ListItem";
 
 const List = props => {
@@ -9,7 +9,7 @@ const List = props => {
           recipe={recipe}
           key={index}
           deleteRecipe={props.deleteRecipe}
-          showRecipe={props.showRecipe}
+          toggleRecipeDetails={props.toggleRecipeDetails}
         />
       ))}
     </ul>

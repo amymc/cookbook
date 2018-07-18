@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { deleteRecipe, showRecipe } from "./Ducks/recipes";
+import { deleteRecipe, toggleRecipeDetails } from "./Ducks/recipes";
 import Details from "./Details";
 import Button from "./Button";
 import List from "./List";
@@ -22,8 +22,6 @@ const filterOptions = [
 
 const getFilteredList = (recipes, filter) => {
   switch (filter) {
-    case "SHOW_ALL":
-      return recipes;
     case "TIME":
       return recipes.filter(recipe => recipe.preparationTime < 30);
     case "RICE_COOKER":
@@ -34,6 +32,8 @@ const getFilteredList = (recipes, filter) => {
           recipe.ingredients.find(ingredient => /onion/.test(ingredient)) &&
           recipe.ingredients.find(ingredient => /Gochujang/.test(ingredient))
       );
+    default:
+      return recipes;
   }
 };
 
@@ -43,13 +43,15 @@ class App extends Component {
     return (
       <div className="App">
         {props.selectedRecipe ? (
-          <Details recipe={props.selectedRecipe} onClick={props.showRecipe} />
+          <Details
+            recipe={props.selectedRecipe}
+            onClick={props.toggleRecipeDetails}
+          />
         ) : (
           <div>
             {filterOptions.map((option, index) => (
               <Button
                 filter_by={option.filter_by}
-                onClick={props.filter}
                 text={option.text}
                 key={index}
               />
@@ -57,7 +59,7 @@ class App extends Component {
             <List
               recipes={props.recipes}
               deleteRecipe={props.deleteRecipe}
-              showRecipe={props.showRecipe}
+              toggleRecipeDetails={props.toggleRecipeDetails}
             />
           </div>
         )}
@@ -74,7 +76,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   deleteRecipe: bindActionCreators(deleteRecipe, dispatch),
-  showRecipe: bindActionCreators(showRecipe, dispatch)
+  toggleRecipeDetails: bindActionCreators(toggleRecipeDetails, dispatch)
 });
 
 export default connect(

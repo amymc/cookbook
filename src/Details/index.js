@@ -1,25 +1,21 @@
 import React from "react";
 
+const BasicList = props => {
+  return (
+    <ul>{props.list.map((item, index) => <li key={index}>{item}</li>)}</ul>
+  );
+};
+
 const Details = props => {
   const { onClick, recipe } = props;
   return (
     <div>
-      <button onClick={onClick}>X</button>
+      <button onClick={onClick}>Close</button>
       <h1>{recipe.title}</h1>
-      <ul>
-        {recipe.ingredients.map((ingredient, index) => (
-          <li key={index}>{ingredient}</li>
-        ))}
-      </ul>
-      <ul>
-        {recipe.equipment.map((item, index) => <li key={index}>{item}</li>)}
-      </ul>
-      <span>{recipe.preparationTime}mins</span>
-      <ul>
-        {recipe.preparationSteps.map((step, index) => (
-          <li key={index}>{step}</li>
-        ))}
-      </ul>
+      <BasicList list={recipe.ingredients} />
+      <BasicList list={recipe.equipment} />
+      <span>Prep time: {recipe.preparationTime}mins</span>
+      <BasicList list={recipe.preparationSteps} />
       {recipe.hints && (
         <ul>
           {recipe.hints.map((hint, index) => (

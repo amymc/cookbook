@@ -1,15 +1,13 @@
-const SHOW_RECIPE = "SHOW_RECIPE";
-export function showRecipe(title) {
-  console.log("SHOW_RECIPE", title);
+const TOGGLE_RECIPE_DETAILS = "TOGGLE_RECIPE_DETAILS";
+export function toggleRecipeDetails(title) {
   return {
-    type: SHOW_RECIPE,
+    type: TOGGLE_RECIPE_DETAILS,
     title
   };
 }
 
 const DELETE_RECIPE = "DELETE_RECIPE";
 export function deleteRecipe(title) {
-  console.log("SHOW_RECIPE", title);
   return {
     type: DELETE_RECIPE,
     title
@@ -18,7 +16,7 @@ export function deleteRecipe(title) {
 
 export const recipesReducer = (state = [], action) => {
   switch (action.type) {
-    case SHOW_RECIPE:
+    case TOGGLE_RECIPE_DETAILS:
       return state.map(
         recipe =>
           recipe.title === action.title
