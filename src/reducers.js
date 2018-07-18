@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import { filterReducer } from "./filter";
-import { recipesReducer } from "./recipes";
+import { filterReducer } from "./Ducks/filter";
+import { recipesReducer } from "./Ducks/recipes";
 
 export default combineReducers({
   recipes: recipesReducer,

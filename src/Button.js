@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { filter } from "./filter";
+import { filter } from "./Ducks/filter";
 
-// const List = props => {
-class Button extends Component {
-  render() {
-    return <button onClick={this.props.filter}>{this.props.text}</button>;
-  }
-}
+const Button = props => {
+  return <button onClick={props.filter}>{props.text}</button>;
+};
+
 const mapDispatchToProps = (dispatch, ownProps) => ({
   filter: () => dispatch(filter(ownProps.filter_by))
 });
@@ -16,4 +14,3 @@ export default connect(
   null,
   mapDispatchToProps
 )(Button);
-// export default Button;

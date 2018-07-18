@@ -1,4 +1,4 @@
-export const SET_FILTER = "SET_FILTER";
+const SET_FILTER = "SET_FILTER";
 export function filter(filterBy) {
   console.log("SET_FILTER", filterBy);
   return {
